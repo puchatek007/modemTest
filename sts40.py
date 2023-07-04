@@ -11,10 +11,7 @@ def calc_temp(data):
 
 class Temperature:
     def __init__(self, bus=None):
-        if bus is None:
-            self.bus = smbus2.SMBus(0)
-        else:
-            self.bus = bus.bus_return()
+        self.bus = smbus2.SMBus(bus)
         self.device_address = 0x46
         self.data_option = 0xFD
         self.data_serial = 0x89
@@ -54,7 +51,7 @@ class Temperature:
         return serial_number
 
 
-if __name__ == "__mian__":
+if __name__ == "__main__":
     print("start")
     temp = Temperature(1)
     print("pobranie temp")
